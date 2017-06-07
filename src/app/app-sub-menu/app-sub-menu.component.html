@@ -1,0 +1,17 @@
+<ng-template ngFor let-child [ngForOf]="(root ? item : item.items)">
+    <li>
+        <a *ngIf="child.routerLink" class="ripplelink" routerlinkactive="active-menuitem-routerlink" [href]="child.url||'#'">
+            <i class="material-icons">{{child.icon}}</i>
+            <span>{{child.label}}</span>
+
+        </a>
+        <a *ngIf="!child.routerLink" class="ripplelink" routerlinkactive="active-menuitem-routerlink" [href]="child.url||'#'">
+            <i class="material-icons">{{child.icon}}</i>
+            <span>{{child.label}}</span>
+            <i class="material-icons">keyboard_arrow_down</i>
+        </a>
+        <ul app-submenu="" class="" style="height: 0px;">
+            <app-submenu [item]="child.items" root="true" class="ultima-menu clearfix"></app-submenu>
+        </ul>
+    </li>
+</ng-template>

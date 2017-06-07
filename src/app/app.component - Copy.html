@@ -1,0 +1,1209 @@
+<div class="layout-wrapper layout-compact" [ngClass]="layout-compact">
+
+  <div #layoutContainer class="layout-container menu-layout-static menu-layout-horizontal" [ngClass]="menu-layout-horizontal">
+
+    <app-topbar></app-topbar>
+
+    <div [ngClass]="{'layout-menu':true,'layout-menu-dark':false}" (click)="onMenuClick($event)">
+      <div #layoutMenuScroller class="nano">
+        <div class="nano-content menu-scroll-content">
+          <!--Sai Commented-->
+          <!--<inline-profile *ngIf="profileMode=='inline'&&!isHorizontal()"></inline-profile>-->
+          <app-menu [reset]="resetMenu"></app-menu>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-main">
+      <router-outlet></router-outlet>
+
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-lg-6">
+
+          <div class="card card-w-title">
+            <h1>InputText</h1>
+            <div class="ui-g form-group">
+              <div class="ui-g-12 ui-md-4">
+                <span class="md-inputfield">
+                        <input pinputtext="" [(ngModel)]="name" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        <label>Name</label>
+                    </span>
+              </div>
+              <div class="ui-g-12 ui-md-4">
+                <span class="md-inputfield">
+                        <input pinputtext="sai@gmail.com" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        <label>Email</label>
+                    </span>
+              </div>
+              <div class="ui-g-12 ui-md-4">
+                <span class="md-inputfield">
+                        <input pinputtext="" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+                        <label>Phone</label>
+                    </span>
+              </div>
+              <div class="ui-g-12 ui-md-4">
+                <input disabled="disabled" pinputtext="" placeholder="Disabled" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+              </div>
+              <div class="ui-g-12 ui-md-4">
+                <span class="md-inputfield">
+                        <input class="ng-dirty ng-invalid ui-inputtext ui-corner-all ui-state-default ui-widget" pinputtext="" placeholder="Invalid" type="text">
+                        <div class="ui-message ui-messages-error ui-corner-all">
+                            This field is required
+                        </div>
+                    </span>
+              </div>
+              <div class="ui-g-12 ui-md-4">
+                <input pinputtext="" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-w-title">
+            <h1>TextArea</h1>
+            <textarea autoresize="autoResize" pinputtextarea="" placeholder="Your Message" class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+              rows="3" cols="30"></textarea>
+          </div>
+
+          <div class="card card-w-title">
+            <h1>AutoComplete</h1>
+            <div class="ui-g form-group">
+              <div class="ui-g-12">
+                <label for="acSimple">Simple</label>
+              </div>
+              <div class="ui-g-12" style="margin-bottom:10px">
+                <p-autoComplete field="name" id="acSimple" placeholder="Countries" class="ng-untouched ng-pristine ng-valid">
+                  <span class="ui-autocomplete ui-widget">
+            <!----><input autocomplete="off" class="ui-inputtext ui-widget ui-state-default ui-corner-all ui-autocomplete-input" type="text" placeholder="Countries" size="30"><!----><!---->
+            <div class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-shadow" style="display: none; width: 100%; max-height: 200px;">
+                <!---->
+            </div>
+        </span>
+                </p-autoComplete>
+              </div>
+
+              <div class="ui-g-12">
+                <label for="acAdvanced">Advanced</label>
+              </div>
+              <div class="ui-g-12">
+                <p-autoComplete id="acAdvanced" multiple="true" placeholder="Hint: type 'v' or 'f'" class="ng-untouched ng-pristine ng-valid">
+                  <span class="ui-autocomplete ui-widget ui-autocomplete-dd ui-autocomplete-multiple">
+            <!----><!----><ul class="ui-autocomplete-multiple-container ui-widget ui-inputtext ui-state-default ui-corner-all">
+                <!---->
+                <li class="ui-autocomplete-input-token">
+                    <input autocomplete="off" type="text" placeholder="Hint: type 'v' or 'f'">
+                </li>
+            </ul><!----><button class="ui-autocomplete-dropdown ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" icon="fa-fw fa-caret-down" pbutton="" type="button">
+              <span class="ui-button-icon-left ui-c fa fa-fw fa-fw fa-caret-down"></span><span class="ui-button-text ui-c">ui-btn</span></button>
+                  <div class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-shadow" style="display: none; width: 100%; max-height: 200px;">
+                    <!---->
+                  </div>
+                  </span>
+                </p-autoComplete>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-w-title">
+            <h1>MultiSelect</h1>
+            <p-multiSelect class="ng-untouched ng-pristine ng-valid">
+              <div class="ui-multiselect ui-widget ui-state-default ui-corner-all">
+                <div class="ui-helper-hidden-accessible">
+                  <input readonly="readonly" type="text">
+                </div>
+                <div class="ui-multiselect-label-container" title="Choose">
+                  <label class="ui-multiselect-label ui-corner-all">Choose</label>
+                </div>
+                <div class="ui-multiselect-trigger ui-state-default ui-corner-right">
+                  <span class="fa fa-fw fa-caret-down ui-c"></span>
+                </div>
+                <div class="ui-multiselect-panel ui-widget ui-widget-content ui-corner-all ui-shadow" style="display: none;">
+                  <div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix">
+                    <div class="ui-chkbox ui-widget">
+                      <div class="ui-helper-hidden-accessible">
+                        <input readonly="readonly" type="checkbox">
+                      </div>
+                      <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                        <span class="ui-chkbox-icon ui-c"></span>
+                      </div>
+                    </div>
+                    <!---->
+                    <div class="ui-multiselect-filter-container">
+                      <input class="ui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox" type="text">
+                      <span class="fa fa-fw fa-search"></span>
+                    </div>
+                    <a class="ui-multiselect-close ui-corner-all" href="#">
+                      <span class="fa fa-close"></span>
+                    </a>
+                  </div>
+                  <div class="ui-multiselect-items-wrapper">
+                    <ul class="ui-multiselect-items ui-multiselect-list ui-widget-content ui-widget ui-corner-all ui-helper-reset" style="max-height: 200px;">
+                      <!---->
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Audi</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>BMW</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Fiat</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Ford</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Honda</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Jaguar</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Mercedes</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Renault</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>VW</label>
+                      </li>
+                      <li class="ui-multiselect-item ui-corner-all" style="display: block;">
+                        <div class="ui-chkbox ui-widget">
+                          <div class="ui-helper-hidden-accessible">
+                            <input readonly="readonly" type="checkbox">
+                          </div>
+                          <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">
+                            <span class="ui-chkbox-icon ui-c"></span>
+                          </div>
+                        </div>
+                        <label>Volvo</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </p-multiSelect>
+          </div>
+
+          <div class="card card-w-title">
+            <h1>Calendar</h1>
+            <p-calendar>
+              <span class="ui-calendar">
+            <!---->
+            <div class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-datepicker-inline" style="display: inline-block; opacity: 1;">
+
+                <!----><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
+                    
+                    <a class="ui-datepicker-prev ui-corner-all" href="#">
+                        <span class="fa fa-angle-left"></span>
+              </a>
+              <a class="ui-datepicker-next ui-corner-all" href="#">
+                <span class="fa fa-angle-right"></span>
+              </a>
+              <div class="ui-datepicker-title">
+                <!----><span class="ui-datepicker-month">June</span>
+                <!---->
+                <!---->
+                <!----><span class="ui-datepicker-year">2017</span>
+              </div>
+          </div>
+          <!---->
+          <table class="ui-datepicker-calendar">
+            <thead>
+              <tr>
+                <!---->
+                <th scope="col">
+                  <span>Su</span>
+                </th>
+                <th scope="col">
+                  <span>Mo</span>
+                </th>
+                <th scope="col">
+                  <span>Tu</span>
+                </th>
+                <th scope="col">
+                  <span>We</span>
+                </th>
+                <th scope="col">
+                  <span>Th</span>
+                </th>
+                <th scope="col">
+                  <span>Fr</span>
+                </th>
+                <th scope="col">
+                  <span>Sa</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!---->
+              <tr>
+                <!---->
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">28</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">29</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">30</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">31</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">1</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">2</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">3</a>
+                </td>
+              </tr>
+              <tr>
+                <!---->
+                <td>
+                  <!----><a class="ui-state-default" href="#">4</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">5</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">6</a>
+                </td>
+                <td class="ui-datepicker-today">
+                  <!----><a class="ui-state-default ui-state-highlight" href="#">7</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">8</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">9</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">10</a>
+                </td>
+              </tr>
+              <tr>
+                <!---->
+                <td>
+                  <!----><a class="ui-state-default" href="#">11</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">12</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">13</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">14</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">15</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">16</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">17</a>
+                </td>
+              </tr>
+              <tr>
+                <!---->
+                <td>
+                  <!----><a class="ui-state-default" href="#">18</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">19</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">20</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">21</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">22</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">23</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">24</a>
+                </td>
+              </tr>
+              <tr>
+                <!---->
+                <td>
+                  <!----><a class="ui-state-default" href="#">25</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">26</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">27</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">28</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">29</a>
+                </td>
+                <td>
+                  <!----><a class="ui-state-default" href="#">30</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">1</a>
+                </td>
+              </tr>
+              <tr>
+                <!---->
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">2</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">3</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">4</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">5</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">6</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">7</a>
+                </td>
+                <td class="ui-datepicker-other-month ui-state-disabled">
+                  <!----><a class="ui-state-default" href="#">8</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!---->
+
+        </div>
+        </span>
+        </p-calendar>
+
+        <div class="ui-g form-group-m" style="margin-top:20px">
+          <div class="ui-g-12">
+            <p-calendar id="popup" placeholder="Popup">
+              <span class="ui-calendar">
+            <!---->
+                <input type="text" class="ui-inputtext ui-widget ui-state-default ui-corner-all" placeholder="Popup"><!---->
+            
+            <div class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-shadow" style="display: none; opacity: 0;">
+
+                <!---->
+                <!---->
+                <!---->
+                
+            </div>
+        </span>
+            </p-calendar>
+          </div>
+          <div class="ui-g-12">
+            <p-calendar dateformat="mm/dd/yy" id="datetime" placeholder="DateTime" showtime="true">
+              <span class="ui-calendar">
+            <!---->
+                <input type="text" class="ui-inputtext ui-widget ui-state-default ui-corner-all" placeholder="DateTime"><!---->
+            
+            <div class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-shadow" style="display: none; opacity: 0;">
+
+                <!---->
+                <!---->
+                <!----><div class="ui-timepicker ui-widget-header ui-corner-all">
+                    <div class="ui-hour-picker">
+                        <a href="#">
+                            <span class="fa fa-angle-up"></span>
+              </a>
+              <span style="display: inline;">0</span><span>7</span>
+              <a href="#">
+                <span class="fa fa-angle-down"></span>
+              </a>
+          </div>
+          <div class="ui-separator">
+            <a href="#">
+              <span class="fa fa-angle-up"></span>
+            </a>
+            <span>:</span>
+            <a href="#">
+              <span class="fa fa-angle-down"></span>
+            </a>
+          </div>
+          <div class="ui-minute-picker">
+            <a href="#">
+              <span class="fa fa-angle-up"></span>
+            </a>
+            <span style="display: none;">0</span><span>23</span>
+            <a href="#">
+              <span class="fa fa-angle-down"></span>
+            </a>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+        </div>
+
+      </div>
+      </span>
+      </p-calendar>
+    </div>
+    <div class="ui-g-12">
+      <p-calendar id="time" placeholder="Time" showtime="true">
+        <span class="ui-calendar">
+            <!---->
+                <input type="text" class="ui-inputtext ui-widget ui-state-default ui-corner-all" placeholder="Time"><!---->
+            
+            <div class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-shadow ui-datepicker-timeonly" style="display: none; opacity: 0;">
+
+                <!---->
+                <!---->
+                <!----><div class="ui-timepicker ui-widget-header ui-corner-all">
+                    <div class="ui-hour-picker">
+                        <a href="#">
+                            <span class="fa fa-angle-up"></span>
+        </a>
+        <span style="display: inline;">0</span><span>7</span>
+        <a href="#">
+          <span class="fa fa-angle-down"></span>
+        </a>
+    </div>
+    <div class="ui-separator">
+      <a href="#">
+        <span class="fa fa-angle-up"></span>
+      </a>
+      <span>:</span>
+      <a href="#">
+        <span class="fa fa-angle-down"></span>
+      </a>
+    </div>
+    <div class="ui-minute-picker">
+      <a href="#">
+        <span class="fa fa-angle-up"></span>
+      </a>
+      <span style="display: none;">0</span><span>23</span>
+      <a href="#">
+        <span class="fa fa-angle-down"></span>
+      </a>
+    </div>
+    <!---->
+    <!---->
+    <!---->
+  </div>
+
+</div>
+</span>
+</p-calendar>
+</div>
+<div class="ui-g-12">
+  <p-calendar id="showIcon" placeholder="Button">
+    <span class="ui-calendar ui-calendar-w-btn">
+            <!---->
+                <input type="text" class="ui-inputtext ui-widget ui-state-default ui-corner-all" placeholder="Button"><!----><button pbutton="" tabindex="-1" type="button" class="ui-datepicker-trigger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><span class="ui-button-icon-left ui-c fa fa-fw fa-calendar"></span><span
+      class="ui-button-text ui-c">ui-btn</span></button>
+
+    <div class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-shadow" style="display: none; opacity: 0;">
+
+      <!---->
+      <!---->
+      <!---->
+
+    </div>
+    </span>
+  </p-calendar>
+</div>
+</div>
+</div>
+
+<div class="card card-w-title">
+  <h1>Chips</h1>
+  <p-chips>
+    <div class="ui-chips ui-widget">
+      <ul class="ui-inputtext ui-state-default ui-corner-all">
+        <!---->
+        <li class="ui-chips-input-token">
+          <input type="text">
+        </li>
+      </ul>
+    </div>
+  </p-chips>
+</div>
+</div>
+
+<div class="ui-g-12 ui-lg-6">
+
+  <div class="card card-w-title">
+    <h1>Checkboxes</h1>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-4">
+        <p-checkbox label="Ultima" name="cg" value="Ultima" class="ng-valid ng-dirty ng-touched">
+          <div class="ui-chkbox ui-widget">
+            <div class="ui-helper-hidden-accessible">
+              <input type="checkbox" name="cg" value="Ultima" class="">
+            </div>
+            <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-active">
+              <span class="ui-chkbox-icon ui-c fa fa-check"></span>
+            </div>
+          </div>
+          <!----><label class="ui-chkbox-label">Ultima</label>
+        </p-checkbox>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <p-checkbox label="Icarus" name="cg" value="Icarus" class="ng-valid ng-dirty ng-touched">
+          <div class="ui-chkbox ui-widget">
+            <div class="ui-helper-hidden-accessible">
+              <input type="checkbox" name="cg" value="Icarus" class="">
+            </div>
+            <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-active">
+              <span class="ui-chkbox-icon ui-c fa fa-check"></span>
+            </div>
+          </div>
+          <!----><label class="ui-chkbox-label">Icarus</label>
+        </p-checkbox>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <p-checkbox label="Omega" name="cg" value="Omega" class="ng-valid ng-dirty ng-touched">
+          <div class="ui-chkbox ui-widget">
+            <div class="ui-helper-hidden-accessible">
+              <input type="checkbox" name="cg" value="Omega" class="">
+            </div>
+            <div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-active">
+              <span class="ui-chkbox-icon ui-c fa fa-check"></span>
+            </div>
+          </div>
+          <!----><label class="ui-chkbox-label">Omega</label>
+        </p-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>RadioButtons</h1>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-4">
+        <p-radioButton label="Ultima" name="rg" value="Ultima" class="ng-untouched ng-pristine ng-valid">
+          <div class="ui-radiobutton ui-widget">
+            <div class="ui-helper-hidden-accessible">
+              <input type="radio" name="rg" value="Ultima">
+            </div>
+            <div class="ui-radiobutton-box ui-widget ui-state-default">
+              <span class="ui-radiobutton-icon"></span>
+            </div>
+          </div>
+          <!----><label class="ui-radiobutton-label">Ultima</label>
+        </p-radioButton>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <p-radioButton label="Icarus" name="rg" value="Icarus" class="ng-untouched ng-pristine ng-valid">
+          <div class="ui-radiobutton ui-widget">
+            <div class="ui-helper-hidden-accessible">
+              <input type="radio" name="rg" value="Icarus">
+            </div>
+            <div class="ui-radiobutton-box ui-widget ui-state-default">
+              <span class="ui-radiobutton-icon"></span>
+            </div>
+          </div>
+          <!----><label class="ui-radiobutton-label">Icarus</label>
+        </p-radioButton>
+      </div>
+      <div class="ui-g-12 ui-md-4">
+        <p-radioButton label="Omega" name="rg" value="Omega" class="ng-untouched ng-pristine ng-valid">
+          <div class="ui-radiobutton ui-widget">
+            <div class="ui-helper-hidden-accessible">
+              <input type="radio" name="rg" value="Omega">
+            </div>
+            <div class="ui-radiobutton-box ui-widget ui-state-default">
+              <span class="ui-radiobutton-icon"></span>
+            </div>
+          </div>
+          <!----><label class="ui-radiobutton-label">Omega</label>
+        </p-radioButton>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>InputSwitch</h1>
+    <p-inputSwitch class="ng-untouched ng-pristine ng-valid">
+      <div class="ui-inputswitch ui-widget ui-widget-content ui-corner-all" style="width: 49px;">
+        <div class="ui-inputswitch-off" style="width: 29px;">
+          <span class="ui-inputswitch-offlabel" style="width: 29px; margin-right: 0px;">Off</span>
+        </div>
+        <div class="ui-inputswitch-on" style="width: 0px;">
+          <span class="ui-inputswitch-onlabel" style="width: 29px; margin-left: -14px;">On</span>
+        </div>
+        <div class="ui-inputswitch-handle ui-state-default" style="width: 23px; left: 0px;"></div>
+        <div class="ui-helper-hidden-accessible">
+          <input readonly="readonly" type="checkbox">
+        </div>
+      </div>
+    </p-inputSwitch>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>Dropdown</h1>
+    <p-dropdown class="ng-untouched ng-pristine ng-valid">
+      <div class="ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix">
+        <!---->
+        <div class="ui-helper-hidden-accessible">
+          <input readonly="" type="text">
+        </div>
+        <!----><label class="ui-dropdown-label ui-inputtext ui-corner-all">Select City</label>
+        <!---->
+        <div class="ui-dropdown-trigger ui-state-default ui-corner-right">
+          <span class="fa fa-fw fa-caret-down ui-c"></span>
+        </div>
+        <div class="ui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow" style="display: none; opacity: 0;">
+          <!---->
+          <div class="ui-dropdown-items-wrapper" style="max-height: 200px;">
+            <!---->
+          </div>
+        </div>
+      </div>
+    </p-dropdown>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>Password</h1>
+    <input ppassword="" type="password" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+  </div>
+
+  <div class="card card-w-title">
+    <h1>Spinner</h1>
+    <p-spinner>
+      <span class="ui-spinner ui-widget ui-corner-all">
+            <input class="ui-inputtext ui-widget ui-state-default ui-corner-all" type="text">
+            <button type="button" class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default">
+                <span class="fa fa-caret-up"></span>
+      </button>
+      <button type="button" class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default">
+                <span class="fa fa-caret-down"></span>
+            </button>
+      </span>
+    </p-spinner>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>Slider</h1>
+    <p-slider class="ng-untouched ng-pristine ng-valid">
+      <div class="ui-slider ui-widget ui-widget-content ui-corner-all ui-slider-horizontal">
+        <!----><span class="ui-slider-range ui-widget-header ui-corner-all" style="left: 20%; width: 60%;"></span>
+        <!---->
+        <!---->
+        <!----><span class="ui-slider-handle ui-state-default ui-corner-all" style="left: 20%;"></span>
+        <!----><span class="ui-slider-handle ui-state-default ui-corner-all" style="left: 80%;"></span>
+      </div>
+    </p-slider>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>Listbox</h1>
+    <p-listbox filter="true" class="ng-untouched ng-pristine ng-valid">
+      <div class="ui-listbox ui-inputtext ui-widget ui-widget-content ui-corner-all">
+        <!---->
+        <div class="ui-widget-header ui-corner-all ui-listbox-header ui-helper-clearfix">
+          <!---->
+          <!---->
+          <div class="ui-listbox-filter-container">
+            <input class="ui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox" type="text">
+            <span class="fa fa-search"></span>
+          </div>
+        </div>
+        <ul class="ui-listbox-list">
+          <!---->
+          <li class="ui-listbox-item ui-corner-all" style="display: block;">
+            <!---->
+            <!----><span>New York</span>
+            <!---->
+          </li>
+          <li class="ui-listbox-item ui-corner-all" style="display: block;">
+            <!---->
+            <!----><span>Rome</span>
+            <!---->
+          </li>
+          <li class="ui-listbox-item ui-corner-all" style="display: block;">
+            <!---->
+            <!----><span>London</span>
+            <!---->
+          </li>
+          <li class="ui-listbox-item ui-corner-all" style="display: block;">
+            <!---->
+            <!----><span>Istanbul</span>
+            <!---->
+          </li>
+          <li class="ui-listbox-item ui-corner-all" style="display: block;">
+            <!---->
+            <!----><span>Paris</span>
+            <!---->
+          </li>
+        </ul>
+      </div>
+    </p-listbox>
+  </div>
+
+  <div class="card card-w-title">
+    <h1>Rating</h1>
+    <p-rating class="ng-untouched ng-pristine ng-valid">
+      <div class="ui-rating">
+        <!---->
+        <a href="#">
+          <span class="fa fa-ban"></span>
+        </a>
+        <!---->
+        <a href="#">
+          <span class="fa fa-star-o"></span>
+        </a>
+        <a href="#">
+          <span class="fa fa-star-o"></span>
+        </a>
+        <a href="#">
+          <span class="fa fa-star-o"></span>
+        </a>
+        <a href="#">
+          <span class="fa fa-star-o"></span>
+        </a>
+        <a href="#">
+          <span class="fa fa-star-o"></span>
+        </a>
+      </div>
+    </p-rating>
+  </div>
+</div>
+
+<div class="ui-g-12">
+  <div class="card card-w-title">
+    <h1>Editor</h1>
+    <p-editor>
+      <div class="ui-widget ui-editor-container ui-corner-all">
+        <!---->
+        <!---->
+        <div class="ui-editor-toolbar ui-widget-header ui-corner-top ql-toolbar ql-snow">
+          <span class="ql-formats">
+                    <span class="ql-header ql-picker"><span class="ql-picker-label" data-label="Normal"><svg viewBox="0 0 18 18"> <polygon class="ql-stroke" points="7 11 9 13 11 11 7 11"></polygon> <polygon class="ql-stroke" points="7 7 9 5 11 7 7 7"></polygon> </svg></span><span
+            class="ql-picker-options"><span class="ql-picker-item" data-value="1" data-label="Heading"></span>
+          <span class="ql-picker-item" data-value="2" data-label="Subheading"></span>
+          <span class="ql-picker-item ql-selected" data-label="Normal"></span>
+          </span>
+          </span><select class="ql-header" style="display: none;">
+                      <option value="1">Heading</option>
+                      <option value="2">Subheading</option>
+                      <option selected="">Normal</option>
+                    </select>
+          <span class="ql-font ql-picker"><span class="ql-picker-label" data-label="Sans Serif"><svg viewBox="0 0 18 18"> <polygon class="ql-stroke" points="7 11 9 13 11 11 7 11"></polygon> <polygon class="ql-stroke" points="7 7 9 5 11 7 7 7"></polygon> </svg></span><span
+            class="ql-picker-options"><span class="ql-picker-item ql-selected" data-label="Sans Serif"></span>
+          <span class="ql-picker-item" data-value="serif" data-label="Serif"></span>
+          <span class="ql-picker-item" data-value="monospace" data-label="Monospace"></span>
+          </span>
+          </span><select class="ql-font" style="display: none;">
+                      <option selected="">Sans Serif</option>
+                      <option value="serif">Serif</option>
+                      <option value="monospace">Monospace</option>
+                    </select>
+          </span>
+          <span class="ql-formats">
+                    <button aria-label="Bold" class="ql-bold" type="button"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"></path> <path class="ql-stroke" d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"></path> </svg></button>
+                    <button aria-label="Italic" class="ql-italic" type="button"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line> <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line> <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line> </svg></button>
+                    <button aria-label="Underline" class="ql-underline" type="button"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path> <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect> </svg></button>
+                </span>
+          <span class="ql-formats">
+                    <span class="ql-color ql-picker ql-color-picker"><span class="ql-picker-label"><svg viewBox="0 0 18 18"> <line class="ql-color-label ql-stroke ql-transparent" x1="3" x2="15" y1="15" y2="15"></line> <polyline class="ql-stroke" points="5.5 11 9 3 12.5 11"></polyline> <line class="ql-stroke" x1="11.63" x2="6.38" y1="9" y2="9"></line> </svg></span><span
+            class="ql-picker-options"><span class="ql-picker-item ql-selected ql-primary"></span>
+          <span class="ql-picker-item ql-primary" data-value="#e60000" style="background-color: rgb(230, 0, 0);"></span><span
+            class="ql-picker-item ql-primary" data-value="#ff9900" style="background-color: rgb(255, 153, 0);"></span><span
+            class="ql-picker-item ql-primary" data-value="#ffff00" style="background-color: rgb(255, 255, 0);"></span><span
+            class="ql-picker-item ql-primary" data-value="#008a00" style="background-color: rgb(0, 138, 0);"></span>
+          <span class="ql-picker-item ql-primary" data-value="#0066cc" style="background-color: rgb(0, 102, 204);"></span><span
+            class="ql-picker-item ql-primary" data-value="#9933ff" style="background-color: rgb(153, 51, 255);"></span><span
+            class="ql-picker-item" data-value="#ffffff" style="background-color: rgb(255, 255, 255);"></span>
+          <span class="ql-picker-item" data-value="#facccc" style="background-color: rgb(250, 204, 204);"></span>
+          <span class="ql-picker-item" data-value="#ffebcc" style="background-color: rgb(255, 235, 204);"></span>
+          <span class="ql-picker-item" data-value="#ffffcc" style="background-color: rgb(255, 255, 204);"></span>
+          <span class="ql-picker-item" data-value="#cce8cc" style="background-color: rgb(204, 232, 204);"></span>
+          <span class="ql-picker-item" data-value="#cce0f5" style="background-color: rgb(204, 224, 245);"></span>
+          <span class="ql-picker-item" data-value="#ebd6ff" style="background-color: rgb(235, 214, 255);"></span>
+          <span class="ql-picker-item"
+            data-value="#bbbbbb" style="background-color: rgb(187, 187, 187);"></span>
+            <span class="ql-picker-item" data-value="#f06666" style="background-color: rgb(240, 102, 102);"></span><span
+              class="ql-picker-item" data-value="#ffc266" style="background-color: rgb(255, 194, 102);"></span>
+            <span class="ql-picker-item" data-value="#ffff66" style="background-color: rgb(255, 255, 102);"></span>
+            <span class="ql-picker-item" data-value="#66b966" style="background-color: rgb(102, 185, 102);"></span><span
+              class="ql-picker-item" data-value="#66a3e0" style="background-color: rgb(102, 163, 224);"></span>
+            <span class="ql-picker-item" data-value="#c285ff" style="background-color: rgb(194, 133, 255);"></span><span
+              class="ql-picker-item" data-value="#888888" style="background-color: rgb(136, 136, 136);"></span>
+            <span class="ql-picker-item" data-value="#a10000" style="background-color: rgb(161, 0, 0);"></span>
+            <span class="ql-picker-item" data-value="#b26b00" style="background-color: rgb(178, 107, 0);"></span>
+            <span class="ql-picker-item"
+              data-value="#b2b200" style="background-color: rgb(178, 178, 0);"></span>
+              <span class="ql-picker-item" data-value="#006100" style="background-color: rgb(0, 97, 0);"></span>
+              <span class="ql-picker-item" data-value="#0047b2" style="background-color: rgb(0, 71, 178);"></span>
+              <span class="ql-picker-item" data-value="#6b24b2" style="background-color: rgb(107, 36, 178);"></span>
+              <span class="ql-picker-item" data-value="#444444" style="background-color: rgb(68, 68, 68);"></span>
+              <span class="ql-picker-item" data-value="#5c0000" style="background-color: rgb(92, 0, 0);"></span>
+              <span class="ql-picker-item" data-value="#663d00" style="background-color: rgb(102, 61, 0);"></span>
+              <span class="ql-picker-item"
+                data-value="#666600" style="background-color: rgb(102, 102, 0);"></span>
+                <span class="ql-picker-item" data-value="#003700" style="background-color: rgb(0, 55, 0);"></span>
+                <span class="ql-picker-item" data-value="#002966" style="background-color: rgb(0, 41, 102);"></span><span
+                  class="ql-picker-item" data-value="#3d1466" style="background-color: rgb(61, 20, 102);"></span></span>
+                </span><select class="ql-color" style="display: none;"><option selected="selected"></option><option value="#e60000"></option><option value="#ff9900"></option><option value="#ffff00"></option><option value="#008a00"></option><option value="#0066cc"></option><option value="#9933ff"></option><option value="#ffffff"></option><option value="#facccc"></option><option value="#ffebcc"></option><option value="#ffffcc"></option><option value="#cce8cc"></option><option value="#cce0f5"></option><option value="#ebd6ff"></option><option value="#bbbbbb"></option><option value="#f06666"></option><option value="#ffc266"></option><option value="#ffff66"></option><option value="#66b966"></option><option value="#66a3e0"></option><option value="#c285ff"></option><option value="#888888"></option><option value="#a10000"></option><option value="#b26b00"></option><option value="#b2b200"></option><option value="#006100"></option><option value="#0047b2"></option><option value="#6b24b2"></option><option value="#444444"></option><option value="#5c0000"></option><option value="#663d00"></option><option value="#666600"></option><option value="#003700"></option><option value="#002966"></option><option value="#3d1466"></option></select>
+                <span class="ql-background ql-picker ql-color-picker"><span class="ql-picker-label"><svg viewBox="0 0 18 18"> <g class="ql-fill ql-color-label"> <polygon points="6 6.868 6 6 5 6 5 7 5.942 7 6 6.868"></polygon> <rect height="1" width="1" x="4" y="4"></rect> <polygon points="6.817 5 6 5 6 6 6.38 6 6.817 5"></polygon> <rect height="1" width="1" x="2" y="6"></rect> <rect height="1" width="1" x="3" y="5"></rect> <rect height="1" width="1" x="4" y="7"></rect> <polygon points="4 11.439 4 11 3 11 3 12 3.755 12 4 11.439"></polygon> <rect height="1" width="1" x="2" y="12"></rect> <rect height="1" width="1" x="2" y="9"></rect> <rect height="1" width="1" x="2" y="15"></rect> <polygon points="4.63 10 4 10 4 11 4.192 11 4.63 10"></polygon> <rect height="1" width="1" x="3" y="8"></rect> <path d="M10.832,4.2L11,4.582V4H10.708A1.948,1.948,0,0,1,10.832,4.2Z"></path> <path d="M7,4.582L7.168,4.2A1.929,1.929,0,0,1,7.292,4H7V4.582Z"></path> <path d="M8,13H7.683l-0.351.8a1.933,1.933,0,0,1-.124.2H8V13Z"></path> <rect height="1" width="1" x="12" y="2"></rect> <rect height="1" width="1" x="11" y="3"></rect> <path d="M9,3H8V3.282A1.985,1.985,0,0,1,9,3Z"></path> <rect height="1" width="1" x="2" y="3"></rect> <rect height="1" width="1" x="6" y="2"></rect> <rect height="1" width="1" x="3" y="2"></rect> <rect height="1" width="1" x="5" y="3"></rect> <rect height="1" width="1" x="9" y="2"></rect> <rect height="1" width="1" x="15" y="14"></rect> <polygon points="13.447 10.174 13.469 10.225 13.472 10.232 13.808 11 14 11 14 10 13.37 10 13.447 10.174"></polygon> <rect height="1" width="1" x="13" y="7"></rect> <rect height="1" width="1" x="15" y="5"></rect> <rect height="1" width="1" x="14" y="6"></rect> <rect height="1" width="1" x="15" y="8"></rect> <rect height="1" width="1" x="14" y="9"></rect> <path d="M3.775,14H3v1H4V14.314A1.97,1.97,0,0,1,3.775,14Z"></path> <rect height="1" width="1" x="14" y="3"></rect> <polygon points="12 6.868 12 6 11.62 6 12 6.868"></polygon> <rect height="1" width="1" x="15" y="2"></rect> <rect height="1" width="1" x="12" y="5"></rect> <rect height="1" width="1" x="13" y="4"></rect> <polygon points="12.933 9 13 9 13 8 12.495 8 12.933 9"></polygon> <rect height="1" width="1" x="9" y="14"></rect> <rect height="1" width="1" x="8" y="15"></rect> <path d="M6,14.926V15H7V14.316A1.993,1.993,0,0,1,6,14.926Z"></path> <rect height="1" width="1" x="5" y="15"></rect> <path d="M10.668,13.8L10.317,13H10v1h0.792A1.947,1.947,0,0,1,10.668,13.8Z"></path> <rect height="1" width="1" x="11" y="15"></rect> <path d="M14.332,12.2a1.99,1.99,0,0,1,.166.8H15V12H14.245Z"></path> <rect height="1" width="1" x="14" y="15"></rect> <rect height="1" width="1" x="15" y="11"></rect> </g> <polyline class="ql-stroke" points="5.5 13 9 5 12.5 13"></polyline> <line class="ql-stroke" x1="11.63" x2="6.38" y1="11" y2="11"></line> </svg></span><span
+                  class="ql-picker-options"><span class="ql-picker-item ql-primary" data-value="#000000" style="background-color: rgb(0, 0, 0);"></span><span
+                  class="ql-picker-item ql-primary" data-value="#e60000" style="background-color: rgb(230, 0, 0);"></span><span
+                  class="ql-picker-item ql-primary" data-value="#ff9900" style="background-color: rgb(255, 153, 0);"></span><span
+                  class="ql-picker-item ql-primary" data-value="#ffff00" style="background-color: rgb(255, 255, 0);"></span><span
+                  class="ql-picker-item ql-primary" data-value="#008a00" style="background-color: rgb(0, 138, 0);"></span><span
+                  class="ql-picker-item ql-primary" data-value="#0066cc" style="background-color: rgb(0, 102, 204);"></span><span
+                  class="ql-picker-item ql-primary" data-value="#9933ff" style="background-color: rgb(153, 51, 255);"></span><span
+                  class="ql-picker-item ql-selected"></span><span class="ql-picker-item" data-value="#facccc" style="background-color: rgb(250, 204, 204);"></span><span
+                  class="ql-picker-item" data-value="#ffebcc" style="background-color: rgb(255, 235, 204);"></span>
+                <span class="ql-picker-item" data-value="#ffffcc" style="background-color: rgb(255, 255, 204);"></span><span
+                  class="ql-picker-item" data-value="#cce8cc" style="background-color: rgb(204, 232, 204);"></span>
+                <span class="ql-picker-item"
+                  data-value="#cce0f5" style="background-color: rgb(204, 224, 245);"></span><span class="ql-picker-item" data-value="#ebd6ff" style="background-color: rgb(235, 214, 255);"></span><span
+                    class="ql-picker-item" data-value="#bbbbbb" style="background-color: rgb(187, 187, 187);"></span><span
+                    class="ql-picker-item" data-value="#f06666" style="background-color: rgb(240, 102, 102);"></span><span
+                    class="ql-picker-item" data-value="#ffc266" style="background-color: rgb(255, 194, 102);"></span><span
+                    class="ql-picker-item" data-value="#ffff66" style="background-color: rgb(255, 255, 102);"></span><span
+                    class="ql-picker-item" data-value="#66b966" style="background-color: rgb(102, 185, 102);"></span><span
+                    class="ql-picker-item" data-value="#66a3e0" style="background-color: rgb(102, 163, 224);"></span><span
+                    class="ql-picker-item" data-value="#c285ff" style="background-color: rgb(194, 133, 255);"></span><span
+                    class="ql-picker-item" data-value="#888888" style="background-color: rgb(136, 136, 136);"></span><span
+                    class="ql-picker-item" data-value="#a10000" style="background-color: rgb(161, 0, 0);"></span>
+                  <span class="ql-picker-item" data-value="#b26b00" style="background-color: rgb(178, 107, 0);"></span><span
+                    class="ql-picker-item" data-value="#b2b200" style="background-color: rgb(178, 178, 0);"></span>
+                  <span class="ql-picker-item" data-value="#006100" style="background-color: rgb(0, 97, 0);"></span>
+                  <span class="ql-picker-item" data-value="#0047b2" style="background-color: rgb(0, 71, 178);"></span><span
+                    class="ql-picker-item" data-value="#6b24b2" style="background-color: rgb(107, 36, 178);"></span>
+                  <span class="ql-picker-item" data-value="#444444" style="background-color: rgb(68, 68, 68);"></span>
+                  <span class="ql-picker-item" data-value="#5c0000" style="background-color: rgb(92, 0, 0);"></span><span
+                    class="ql-picker-item" data-value="#663d00" style="background-color: rgb(102, 61, 0);"></span>
+                  <span class="ql-picker-item" data-value="#666600" style="background-color: rgb(102, 102, 0);"></span><span
+                    class="ql-picker-item" data-value="#003700" style="background-color: rgb(0, 55, 0);"></span>
+                  <span class="ql-picker-item" data-value="#002966" style="background-color: rgb(0, 41, 102);"></span><span
+                    class="ql-picker-item" data-value="#3d1466" style="background-color: rgb(61, 20, 102);"></span></span>
+                  </span><select class="ql-background" style="display: none;"><option value="#000000"></option><option value="#e60000"></option><option value="#ff9900"></option><option value="#ffff00"></option><option value="#008a00"></option><option value="#0066cc"></option><option value="#9933ff"></option><option selected="selected"></option><option value="#facccc"></option><option value="#ffebcc"></option><option value="#ffffcc"></option><option value="#cce8cc"></option><option value="#cce0f5"></option><option value="#ebd6ff"></option><option value="#bbbbbb"></option><option value="#f06666"></option><option value="#ffc266"></option><option value="#ffff66"></option><option value="#66b966"></option><option value="#66a3e0"></option><option value="#c285ff"></option><option value="#888888"></option><option value="#a10000"></option><option value="#b26b00"></option><option value="#b2b200"></option><option value="#006100"></option><option value="#0047b2"></option><option value="#6b24b2"></option><option value="#444444"></option><option value="#5c0000"></option><option value="#663d00"></option><option value="#666600"></option><option value="#003700"></option><option value="#002966"></option><option value="#3d1466"></option></select>
+                  </span>
+                  <span class="ql-formats">
+                    <button aria-label="Ordered List" class="ql-list" value="ordered" type="button"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line> <line class="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line> <path class="ql-fill" d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"></path> <path class="ql-stroke ql-thin" d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"></path> <path class="ql-stroke ql-thin" d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"></path> </svg></button>
+                    <button aria-label="Unordered List" class="ql-list" value="bullet" type="button"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line> <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line> <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line> </svg></button>
+                    <span class="ql-align ql-picker ql-icon-picker"><span class="ql-picker-label"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="3" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="3" x2="13" y1="14" y2="14"></line> <line class="ql-stroke" x1="3" x2="9" y1="4" y2="4"></line> </svg></span><span
+                    class="ql-picker-options"><span class="ql-picker-item ql-selected"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="3" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="3" x2="13" y1="14" y2="14"></line> <line class="ql-stroke" x1="3" x2="9" y1="4" y2="4"></line> </svg></span><span
+                    class="ql-picker-item" data-value="center"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="15" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="14" x2="4" y1="14" y2="14"></line> <line class="ql-stroke" x1="12" x2="6" y1="4" y2="4"></line> </svg></span><span
+                    class="ql-picker-item" data-value="right"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="15" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="15" x2="5" y1="14" y2="14"></line> <line class="ql-stroke" x1="15" x2="9" y1="4" y2="4"></line> </svg></span><span
+                    class="ql-picker-item" data-value="justify"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="15" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="15" x2="3" y1="14" y2="14"></line> <line class="ql-stroke" x1="15" x2="3" y1="4" y2="4"></line> </svg></span></span>
+                  </span><select class="ql-align" style="display: none;">
+                        <option selected=""></option>
+                        <option value="center"></option>
+                        <option value="right"></option>
+                        <option value="justify"></option>
+                    </select>
+                  </span>
+                  <span class="ql-formats">
+                    <button aria-label="Insert Link" class="ql-link" type="button"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line> <path class="ql-even ql-stroke" d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"></path> <path class="ql-even ql-stroke" d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"></path> </svg></button>
+                    <button aria-label="Insert Image" class="ql-image" type="button"><svg viewBox="0 0 18 18"> <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect> <circle class="ql-fill" cx="6" cy="7" r="1"></circle> <polyline class="ql-even ql-fill" points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline> </svg></button>
+                    <button aria-label="Insert Code Block" class="ql-code-block" type="button"><svg viewBox="0 0 18 18"> <polyline class="ql-even ql-stroke" points="5 7 3 9 5 11"></polyline> <polyline class="ql-even ql-stroke" points="13 7 15 9 13 11"></polyline> <line class="ql-stroke" x1="10" x2="8" y1="5" y2="13"></line> </svg></button>
+                </span>
+                  <span class="ql-formats">
+                    <button aria-label="Remove Styles" class="ql-clean" type="button"><svg class="" viewBox="0 0 18 18"> <line class="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line> <line class="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line> <line class="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line> <line class="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line> <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect> </svg></button>
+                </span>
+        </div>
+        <div class="ui-editor-content ql-container ql-snow" style="height: 320px;">
+          <div class="ql-editor ql-blank" contenteditable="true">
+            <p><br></p>
+          </div>
+          <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+          <div class="ql-tooltip ql-hidden">
+            <a class="ql-preview" target="_blank" href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">
+            <a class="ql-action"></a>
+            <a class="ql-remove"></a>
+          </div>
+        </div>
+      </div>
+    </p-editor>
+  </div>
+</div>
+
+<div class="ui-g-12 ui-g-nopad">
+  <div class="ui-g-12 ui-lg-6" style="padding-top:0">
+    <div class="card card-w-title">
+      <h1>Buttons</h1>
+
+      <div class="ui-g">
+        <div class="ui-g-12">ToggleButton</div>
+        <div class="ui-g-12">
+          <p-toggleButton class="ng-untouched ng-pristine ng-valid">
+            <div class="ui-button ui-togglebutton ui-widget ui-state-default ui-corner-all ui-button-text-only">
+              <div class="ui-helper-hidden-accessible">
+                <input type="checkbox">
+              </div>
+              <!---->
+              <span class="ui-button-text ui-unselectable-text">No</span>
+            </div>
+          </p-toggleButton>
+        </div>
+
+        <div class="ui-g-12">SelectButton</div>
+        <div class="ui-g-12">
+          <p-selectButton class="ng-untouched ng-pristine ng-valid">
+            <div class="ui-selectbutton ui-buttonset ui-widget ui-corner-all ui-buttonset-3">
+              <!---->
+              <div class="ui-button ui-widget ui-state-default ui-button-text-only">
+                <span class="ui-button-text ui-c">Apartment</span>
+                <div class="ui-helper-hidden-accessible">
+                  <input type="checkbox">
+                </div>
+              </div>
+              <div class="ui-button ui-widget ui-state-default ui-button-text-only">
+                <span class="ui-button-text ui-c">House</span>
+                <div class="ui-helper-hidden-accessible">
+                  <input type="checkbox">
+                </div>
+              </div>
+              <div class="ui-button ui-widget ui-state-default ui-button-text-only">
+                <span class="ui-button-text ui-c">Studio</span>
+                <div class="ui-helper-hidden-accessible">
+                  <input type="checkbox">
+                </div>
+              </div>
+            </div>
+          </p-selectButton>
+        </div>
+
+        <div class="ui-g-12">Button</div>
+        <div class="ui-g-12">
+          <button label="Bookmark" pbutton="" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-c">Bookmark</span></button>
+        </div>
+
+        <div class="ui-g-12">Left Icon</div>
+        <div class="ui-g-12">
+          <button icon="ui-icon-clear" label="Clear" pbutton="" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"><span class="ui-button-icon-left ui-c fa fa-fw ui-icon-clear"></span><span class="ui-button-text ui-c">Clear</span></button>
+        </div>
+
+        <div class="ui-g-12">Right Icon</div>
+        <div class="ui-g-12">
+          <button icon="ui-icon-clear" iconpos="right" label="Clear" pbutton="" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-right"><span class="ui-button-icon-right ui-c fa fa-fw ui-icon-clear"></span><span class="ui-button-text ui-c">Clear</span></button>
+        </div>
+
+        <div class="ui-g-12">Icon Only</div>
+        <div class="ui-g-12">
+          <button icon="ui-icon-add" pbutton="" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><span class="ui-button-icon-left ui-c fa fa-fw ui-icon-add"></span><span class="ui-button-text ui-c">ui-btn</span></button>
+        </div>
+
+        <div class="ui-g-12">Link</div>
+        <div class="ui-g-12"><a href="http://www.primefaces.org" target="_blank">Homepage</a></div>
+
+        <div class="ui-g-12">SplitButton</div>
+        <div class="ui-g-12">
+          <p-splitButton icon="ui-icon-save" label="Save">
+            <div class="ui-splitbutton ui-buttonset ui-widget">
+              <button cornerstyleclass="ui-corner-left" pbutton="" type="button" class="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left">
+            <span class="ui-button-icon-left ui-c fa fa-fw ui-icon-save"></span><span class="ui-button-text ui-c">Save</span></button><button
+                class="ui-splitbutton-menubutton ui-button ui-widget ui-state-default ui-corner-right ui-button-icon-only"
+                cornerstyleclass="ui-corner-right" icon="fa-caret-down" pbutton="" type="button"><span class="ui-button-icon-left ui-c fa fa-fw fa-caret-down"></span><span class="ui-button-text ui-c">ui-btn</span></button>
+              <div class="ui-menu ui-menu-dynamic ui-widget ui-widget-content ui-corner-all ui-helper-clearfix ui-shadow" style="display: none;">
+                <ul class="ui-menu-list ui-helper-reset">
+                  <!---->
+                  <li class="ui-menuitem ui-widget ui-corner-all" role="menuitem">
+                    <!---->
+                    <a class="ui-menuitem-link ui-corner-all" href="#">
+                      <!----><span class="ui-icon-update ui-menuitem-icon fa fa-fw"></span>
+                      <span class="ui-menuitem-text">Update</span>
+                    </a>
+                    <!---->
+                  </li>
+                  <li class="ui-menuitem ui-widget ui-corner-all" role="menuitem">
+                    <!---->
+                    <a class="ui-menuitem-link ui-corner-all" href="#">
+                      <!----><span class="ui-icon-close ui-menuitem-icon fa fa-fw"></span>
+                      <span class="ui-menuitem-text">Delete</span>
+                    </a>
+                    <!---->
+                  </li>
+                  <li class="ui-menuitem ui-widget ui-corner-all" role="menuitem">
+                    <!---->
+                    <a class="ui-menuitem-link ui-corner-all" href="http://www.primefaces.org/primeng">
+                      <!----><span class="ui-icon-home ui-menuitem-icon fa fa-fw"></span>
+                      <span class="ui-menuitem-text">Home</span>
+                    </a>
+                    <!---->
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </p-splitButton>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-12 ui-lg-6" style="padding-top:0">
+    <div class="card card-w-title">
+      <h1>Colored Buttons</h1>
+      <p>Raised and Flat buttons with various color alternatives.</p>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6" style="text-align:center">
+          <button label="Primary Button" pbutton="" style="margin-bottom:10px" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-c">Primary Button</span></button>
+
+          <button label="Inline Button" pbutton="" style="margin-bottom:10px;width:auto" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-c">Inline Button</span></button>
+
+          <button class="blue-grey-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Blue-Grey Button"
+            pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Blue-Grey Button</span></button>
+
+            <button class="cyan-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Cyan Button" pbutton=""
+              style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Cyan Button</span></button>
+
+              <button class="amber-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Amber Button" pbutton=""
+                style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Amber Button</span></button>
+
+                <button class="teal-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Teal Button" pbutton=""
+                  style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Teal Button</span></button>
+
+                  <button class="red-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Red Button" pbutton=""
+                    style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Red Button</span></button>
+
+                    <button class="orange-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Orange Button" pbutton=""
+                      style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Orange Button</span></button>
+
+                      <button class="green-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Green Button" pbutton=""
+                        style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Green Button</span></button>
+
+                        <button class="deep-orange-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Deep-Orange Button"
+                          pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Deep-Orange Button</span></button>
+
+                          <button class="purple-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Purple Button" pbutton=""
+                            style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Purple Button</span></button>
+
+                            <button class="indigo-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Indigo Button" pbutton=""
+                              style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Indigo Button</span></button>
+
+                              <button class="pink-btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Pink Button" pbutton=""
+                                style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Pink Button</span></button>
+        </div>
+
+        <div class="ui-g-12 ui-md-6" style="text-align:center">
+          <button label="Primary Button" pbutton="" style="margin-bottom:10px" styleclass="flat" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-c">Primary Button</span></button>
+
+          <button label="Inline Button" pbutton="" style="margin-bottom:10px;width:auto" styleclass="flat" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text ui-c">Inline Button</span></button>
+
+          <button class="blue-grey-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Blue-Grey Button"
+            pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Blue-Grey Button</span></button>
+
+            <button class="cyan-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Cyan Button"
+              pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Cyan Button</span></button>
+
+              <button class="amber-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Amber Button"
+                pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Amber Button</span></button>
+
+                <button class="teal-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Teal Button"
+                  pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Teal Button</span></button>
+
+                  <button class="red-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Red Button" pbutton=""
+                    style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Red Button</span></button>
+
+                    <button class="orange-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Orange Button"
+                      pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Orange Button</span></button>
+
+                      <button class="green-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Green Button"
+                        pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Green Button</span></button>
+
+                        <button class="deep-orange-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Deep-Orange Button"
+                          pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Deep-Orange Button</span></button>
+
+                          <button class="purple-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Purple Button"
+                            pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Purple Button</span></button>
+
+                            <button class="indigo-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Indigo Button"
+                              pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Indigo Button</span></button>
+
+                              <button class="pink-btn flat ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" label="Pink Button"
+                                pbutton="" style="margin-bottom:10px" type="button"><span class="ui-button-text ui-c">Pink Button</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--<app-footer></app-footer>-->
+<br>
+<h4>Footer</h4>
+<button (click)="changeTheme($event,'cyan');">cyan</button>
+<button (click)="changeTheme($event,'blue');">blue</button>
+</div>
+</div>
+
+</div>

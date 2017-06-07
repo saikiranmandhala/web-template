@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Angular Quickstart</title>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      color: #369;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+  <!--<link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/omega/theme.css" />-->
+  <link rel="stylesheet" type="text/css" href="./bundle.css" />
+  <link rel="stylesheet" id="theme-layout" type="text/css" href="./layout-blue.css" />
+  <link rel="stylesheet" id="theme-css" type="text/css" href="./theme-blue.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Polyfills -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="systemjs.config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script type="text/javascript">
+    $(document).on('click', '.ultima-menu > li ', function (event) {
+      // debugger
+      //$('ul[app-submenu]').css({ 'height': '0px' });
+      $('.ultima-menu > li').removeClass('active-menuitem');
+      $(this).addClass('active-menuitem');
+      $(this).children('ul').css({ 'height': '' });
+      event.stopPropagation();
+    });
+
+    $(document).on('click', 'body', function () {
+      // debugger
+      $('ul[app-submenu]').css({ 'height': '0px' });
+      $('.topbar-items').children('li').removeClass('active-top-menu');
+    });
+
+    $(document).on('click', 'a', function (event) {
+      
+      var parent = $(this).parents('.topbar-items')
+      if (parent && parent.length > 0) {
+        $(this).parents('.topbar-items').children('li').removeClass('active-top-menu');
+        $(this).parent('li').addClass('active-top-menu');
+        event.stopPropagation();
+      }
+    });
+
+    $(function () {
+      var ink, d, x, y;
+      $(document.body).off('mousedown.ripple', '.ripplelink,.ui-button:enabled')
+        .on('mousedown.ripple', '.ripplelink,.ui-button:enabled', null,
+        function (e) {
+          var element = $(this);
+          if (element.find(".ink").length === 0) {
+            if (element.hasClass('ripplelink'))
+              element.children('span').after("<span class='ink'></span>");
+            else element.append("<span class='ink'></span>");
+          }
+          ink = $(this).find(".ink"); ink.removeClass("ripple-animate");
+          if (!ink.height() && !ink.width()) {
+            d = Math.max($(this).outerWidth(), $(this).outerHeight()); ink.css({ height: d, width: d });
+          }
+          x = e.pageX - $(this).offset().left - ink.width() / 2; y = e.pageY - $(this).offset().top - ink.height() / 2;
+          ink.css({ top: y + 'px', left: x + 'px', 'pointer-events': 'none' }).addClass("ripple-animate");
+        });
+
+
+    });
+  </script>
+  <script>
+    System.import('main.js').catch(function (err) { console.error(err); });
+  </script>
+</head>
+
+<body>
+  <my-app>Loading AppComponent content here ...</my-app>
+</body>
+
+</html>
